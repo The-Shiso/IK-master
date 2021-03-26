@@ -91,7 +91,7 @@ else:
                 'NAME': 'blogdb',
                 'USER': 'blog_admin',
                 'PASSWORD': 'testing123',
-                'HOST': 'localhost',
+                'HOST': 'bloglive.herokuapp.com',
                 'PORT': '',
           }
   }
