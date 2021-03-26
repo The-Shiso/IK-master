@@ -89,10 +89,10 @@ else:
            'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
                 'NAME': 'blogdb',
-                'USER': 'blog_admin',
-                'PASSWORD': 'testing123',
-                'HOST': 'bloglive.herokuapp.com',
-                'PORT': '',
+                'USER': 'llebycktrquzpe',
+                'PASSWORD': '1aab651647108517e328bf008d74f4ddca56a7dad1682ccc834a6067e64def04',
+                'HOST': 'ec2-3-211-37-117.compute-1.amazonaws.com',
+                'PORT': '5432',
           }
   }
 
