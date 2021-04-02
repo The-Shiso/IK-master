@@ -55,6 +55,15 @@ def get_category_count():
         .annotate(Count('categories__title'))
     return queryset
 
+class ContactView(View):
+    form = EmailSignupForm()
+
+    def get(self, request, *args, **kwargs):
+
+        context = {
+            'form': self.form
+        }
+        return render(request, 'Contact.html', context)
 
 class IndexView(View):
     form = EmailSignupForm()
