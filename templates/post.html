@@ -20,7 +20,14 @@
       </div>
       <div class="container">
         <div class="row">
-                      <div class="col-lg-4">   <!-- -->
+          <div class="col-lg-8 mb-5 mb-lg-0">
+
+
+            {{ post.content | safe }}
+
+
+          </div>
+            <div class="col-lg-4">   <!-- -->
             <!-- About me widget -->
             <div class="mb-5 text-center"><img class="mb-3 rounded-circle img-thumbnail shadow-sm" src="{% static 'img/author.jpg' %}" alt="" width="110">
               <h3 class="h4">About me</h3>
@@ -98,13 +105,7 @@
             </div>
           </div>
 
-          <div class="col-lg-8 mb-5 mb-lg-0">
 
-
-            {{ post.content | safe }}
-
-
-          </div>
         </div>
       </div>
     </section>

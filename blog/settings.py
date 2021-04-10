@@ -155,6 +155,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Tinymce
 
 TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 1220,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',

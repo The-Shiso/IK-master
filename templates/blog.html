@@ -19,6 +19,53 @@
     <section class="pt-5">
       <div class="container pt-5">
         <div class="row mb-5">
+
+                      <div class="col-lg-8">
+            <div class="row text-center">
+
+              {% for post in queryset %}
+              <div class="col-lg-6 mb-5"><a href="{{ post.get_absolute_url }}"><img class="img-fluid mb-4" src="{{ post.thumbnail.url }}" alt=""/></a>
+                <ul class="list-inline small text-uppercase mb-0">
+                  <li class="list-inline-item mr-0 text-gray align-middle">By </li>
+                  <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="#">{{ post.author.user.username }}</a></li>
+                  <li class="list-inline-item text-gray align-middle mr-0">|</li>
+                  <li class="list-inline-item text-gray align-middle">{{ post.timestamp|timesince }} ago</li>
+                </ul>
+                <h3 class="h4 mt-2"> <a class="reset-anchor" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+
+                {% for cat in post.categories.all %}
+                <a class="reset-anchor text-gray text-uppercase small mb-2 d-block" href="#">{{ cat }}</a>
+                {% endfor %}
+                <p class="text-small mb-1">{{ post.overview }}</p><a class="btn btn-link" href="index.html">Continue reading</a>
+              </div>
+
+              {% endfor %}
+
+            </div>
+
+        <!--     Listing navigation -->
+
+
+
+
+
+                {% if is_paginated %}
+
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                {% if page_obj.has_previous %}
+                <div class="col-sm-6 text-center text-sm-left mb-2 mb-sm-0"><a class="btn btn-outline-secondary btn-sm" href="?{{ page_request_var }}={{ page_obj.previous_page_number }}"><i class="fas fa-angle-left mr-2"></i>Prev posts</a></div>
+                {% endif %}
+         <!--       <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}" class="page-link active">{{ page_obj.number }}</a></li>  -->
+                {% if page_obj.has_next %}
+                <div class="col-sm-6 text-center text-sm-right text-right right"><a class="btn btn-outline-secondary btn-sm" href="?{{ page_request_var }}={{ page_obj.next_page_number }}">Next posts<i class="fas fa-angle-right ml-2"></i></a></div>
+                {% endif %}
+              </ul>
+            </nav>
+            {% endif %}
+
+          </div>
+
                     <div class="col-lg-4">
             <!-- About me widget -->
             <div class="mb-5 text-center"><img class="mb-3 rounded-circle img-thumbnail shadow-sm" src="{% static 'img/author.jpg' %}" alt="" width="110">
@@ -98,51 +145,6 @@
             </div>
           </div>
 
-          <div class="col-lg-8">
-            <div class="row text-center">
-
-              {% for post in queryset %}
-              <div class="col-lg-6 mb-5"><a href="{{ post.get_absolute_url }}"><img class="img-fluid mb-4" src="{{ post.thumbnail.url }}" alt=""/></a>
-                <ul class="list-inline small text-uppercase mb-0">
-                  <li class="list-inline-item mr-0 text-gray align-middle">By </li>
-                  <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="#">{{ post.author.user.username }}</a></li>
-                  <li class="list-inline-item text-gray align-middle mr-0">|</li>
-                  <li class="list-inline-item text-gray align-middle">{{ post.timestamp|timesince }} ago</li>
-                </ul>
-                <h3 class="h4 mt-2"> <a class="reset-anchor" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-
-                {% for cat in post.categories.all %}
-                <a class="reset-anchor text-gray text-uppercase small mb-2 d-block" href="#">{{ cat }}</a>
-                {% endfor %}
-                <p class="text-small mb-1">{{ post.overview }}</p><a class="btn btn-link" href="index.html">Continue reading</a>
-              </div>
-
-              {% endfor %}
-
-            </div>
-
-        <!--     Listing navigation -->
-
-
-
-
-
-                {% if is_paginated %}
-
-            <nav aria-label="Page navigation example">
-              <ul class="pagination pagination-template d-flex justify-content-center">
-                {% if page_obj.has_previous %}
-                <div class="col-sm-6 text-center text-sm-left mb-2 mb-sm-0"><a class="btn btn-outline-secondary btn-sm" href="?{{ page_request_var }}={{ page_obj.previous_page_number }}"><i class="fas fa-angle-left mr-2"></i>Prev posts</a></div>
-                {% endif %}
-         <!--       <li class="page-item"><a href="?{{ page_request_var }}={{ page_obj.number }}" class="page-link active">{{ page_obj.number }}</a></li>  -->
-                {% if page_obj.has_next %}
-                <div class="col-sm-6 text-center text-sm-right text-right right"><a class="btn btn-outline-secondary btn-sm" href="?{{ page_request_var }}={{ page_obj.next_page_number }}">Next posts<i class="fas fa-angle-right ml-2"></i></a></div>
-                {% endif %}
-              </ul>
-            </nav>
-            {% endif %}
-
-          </div>
           <!-- Sidebar -->
         </div>
       </div>
